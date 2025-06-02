@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftSync.Server", "GiftSync.Server\GiftSync.Server.csproj", "{2C936F1F-C934-4CAA-B4E6-71F47500CBA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftSync.Server.Tests", "GiftSync.Server.Tests\GiftSync.Server.Tests.csproj", "{6167F3C8-4C51-4AC8-BBD0-AA2A9BB7B5BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C936F1F-C934-4CAA-B4E6-71F47500CBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C936F1F-C934-4CAA-B4E6-71F47500CBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C936F1F-C934-4CAA-B4E6-71F47500CBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C936F1F-C934-4CAA-B4E6-71F47500CBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6167F3C8-4C51-4AC8-BBD0-AA2A9BB7B5BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6167F3C8-4C51-4AC8-BBD0-AA2A9BB7B5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6167F3C8-4C51-4AC8-BBD0-AA2A9BB7B5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6167F3C8-4C51-4AC8-BBD0-AA2A9BB7B5BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
