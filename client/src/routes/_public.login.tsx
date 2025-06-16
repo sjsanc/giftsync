@@ -2,8 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../stores/auth";
 import { Button, Field, Input, Text } from "@chakra-ui/react";
+import { useMutation } from "@tanstack/react-query";
+import { useAuthStore } from "../stores/useAuthStore";
 
 export const Route = createFileRoute("/_public/login")({
 	component: RouteComponent,
@@ -23,7 +24,11 @@ const defaultValues: LoginFormSchema = {
 
 function RouteComponent() {
 	const navigate = Route.useNavigate();
-	const auth = useAuth();
+	const authStore = useAuthStore();
+
+	const mutation = useMutation({
+		mutationFn: authStore.login,
+	});
 
 	const form = useForm<LoginFormSchema>({
 		resolver: zodResolver(loginFormSchema),
@@ -31,8 +36,10 @@ function RouteComponent() {
 	});
 
 	const handleSubmit = form.handleSubmit(async (data: LoginFormSchema) => {
-		auth.login({ email: data.email, password: data.password });
-		await navigate({ to: "/profile" });
+		const result = await mutation.mutateAsync(data);
+		if (result) {
+			navigate({ to: "/" });
+		}
 	});
 
 	return (
@@ -68,6 +75,7 @@ function RouteComponent() {
 					colorPalette="purple"
 					variant="solid"
 					width={"full"}
+					loading={mutation.isPending}
 				>
 					Login
 				</Button>

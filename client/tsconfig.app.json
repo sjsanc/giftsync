@@ -22,11 +22,6 @@
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true,
 
-		/* for Chakra */
-		"paths": {
-			"@/*": ["./src/*"]
-		},
-
 		/* OpenApi-ts */
 		"noUncheckedIndexedAccess": true
 	},

@@ -21,6 +21,7 @@ import { Route as AuthIndexImport } from './routes/_auth.index'
 import { Route as PublicRegisterImport } from './routes/_public.register'
 import { Route as PublicLoginImport } from './routes/_public.login'
 import { Route as AuthProfileImport } from './routes/_auth.profile'
+import { Route as AuthCirclesImport } from './routes/_auth.circles'
 
 // Create/Update Routes
 
@@ -82,6 +83,12 @@ const AuthProfileRoute = AuthProfileImport.update({
   getParentRoute: () => AuthRoute,
 } as any)
 
+const AuthCirclesRoute = AuthCirclesImport.update({
+  id: '/circles',
+  path: '/circles',
+  getParentRoute: () => AuthRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -128,6 +135,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuoteImport
       parentRoute: typeof rootRoute
     }
+    '/_auth/circles': {
+      id: '/_auth/circles'
+      path: '/circles'
+      fullPath: '/circles'
+      preLoaderRoute: typeof AuthCirclesImport
+      parentRoute: typeof AuthImport
+    }
     '/_auth/profile': {
       id: '/_auth/profile'
       path: '/profile'
@@ -162,11 +176,13 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface AuthRouteChildren {
+  AuthCirclesRoute: typeof AuthCirclesRoute
   AuthProfileRoute: typeof AuthProfileRoute
   AuthIndexRoute: typeof AuthIndexRoute
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
+  AuthCirclesRoute: AuthCirclesRoute,
   AuthProfileRoute: AuthProfileRoute,
   AuthIndexRoute: AuthIndexRoute,
 }
@@ -192,6 +208,7 @@ export interface FileRoutesByFullPath {
   '/beans': typeof BeansRoute
   '/logout': typeof LogoutRoute
   '/quote': typeof QuoteRoute
+  '/circles': typeof AuthCirclesRoute
   '/profile': typeof AuthProfileRoute
   '/login': typeof PublicLoginRoute
   '/register': typeof PublicRegisterRoute
@@ -204,6 +221,7 @@ export interface FileRoutesByTo {
   '/beans': typeof BeansRoute
   '/logout': typeof LogoutRoute
   '/quote': typeof QuoteRoute
+  '/circles': typeof AuthCirclesRoute
   '/profile': typeof AuthProfileRoute
   '/login': typeof PublicLoginRoute
   '/register': typeof PublicRegisterRoute
@@ -218,6 +236,7 @@ export interface FileRoutesById {
   '/beans': typeof BeansRoute
   '/logout': typeof LogoutRoute
   '/quote': typeof QuoteRoute
+  '/_auth/circles': typeof AuthCirclesRoute
   '/_auth/profile': typeof AuthProfileRoute
   '/_public/login': typeof PublicLoginRoute
   '/_public/register': typeof PublicRegisterRoute
@@ -232,6 +251,7 @@ export interface FileRouteTypes {
     | '/beans'
     | '/logout'
     | '/quote'
+    | '/circles'
     | '/profile'
     | '/login'
     | '/register'
@@ -243,6 +263,7 @@ export interface FileRouteTypes {
     | '/beans'
     | '/logout'
     | '/quote'
+    | '/circles'
     | '/profile'
     | '/login'
     | '/register'
@@ -255,6 +276,7 @@ export interface FileRouteTypes {
     | '/beans'
     | '/logout'
     | '/quote'
+    | '/_auth/circles'
     | '/_auth/profile'
     | '/_public/login'
     | '/_public/register'
@@ -301,6 +323,7 @@ export const routeTree = rootRoute
     "/_auth": {
       "filePath": "_auth.tsx",
       "children": [
+        "/_auth/circles",
         "/_auth/profile",
         "/_auth/"
       ]
@@ -323,6 +346,10 @@ export const routeTree = rootRoute
     },
     "/quote": {
       "filePath": "quote.tsx"
+    },
+    "/_auth/circles": {
+      "filePath": "_auth.circles.tsx",
+      "parent": "/_auth"
     },
     "/_auth/profile": {
       "filePath": "_auth.profile.tsx",

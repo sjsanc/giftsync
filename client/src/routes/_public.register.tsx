@@ -1,4 +1,4 @@
-import { useAuth } from "@/stores/auth";
+import { useAuth } from "@/stores/useAuthStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createFileRoute } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";

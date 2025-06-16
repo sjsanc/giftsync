@@ -1,9 +1,9 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
-import { useAuth } from "../stores/auth";
+import { useAuthStore } from "../stores/useAuthStore";
 
 export const Route = createFileRoute("/logout")({
 	beforeLoad: () => {
-		useAuth.getState().logout();
+		useAuthStore.getState().logout();
 
 		throw redirect({
 			to: "/",

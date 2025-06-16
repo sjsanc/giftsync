@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useAuth } from "../stores/auth";
 import { CalendarDays } from "lucide-react";
 
 export const Route = createFileRoute("/_auth/")({
@@ -7,10 +6,8 @@ export const Route = createFileRoute("/_auth/")({
 });
 
 function RouteComponent() {
-	const auth = useAuth();
-
 	return (
-		<div className="flex flex-col space-y-4 container mx-auto py-4">
+		<div className="w-[1100px] mx-auto py-4 flex flex-col space-y-4">
 			<div className="flex flex-col space-y-2">
 				<div className="font-semibold">Upcoming Events</div>
 				<div className="grid grid-cols-2 gap-4">

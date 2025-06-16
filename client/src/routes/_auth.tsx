@@ -1,23 +1,10 @@
-import {
-	createFileRoute,
-	Link,
-	Outlet,
-	redirect,
-} from "@tanstack/react-router";
-import { useAuth } from "../stores/auth";
+import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { CircleUser } from "lucide-react";
+import { useAuthStore } from "../stores/useAuthStore";
 
 export const Route = createFileRoute("/_auth")({
 	component: Component,
-	beforeLoad: () => {
-		const isAuthenticated = useAuth.getState().isAuthenticated;
-
-		// if (!isAuthenticated) {
-		// 	throw redirect({
-		// 		to: "/login",
-		// 	});
-		// }
-	},
+	beforeLoad: useAuthStore.getState().authorise,
 });
 
 function Component() {
@@ -30,6 +17,15 @@ function Component() {
 				>
 					Giftsync
 				</Link>
+
+				<div className="text-white font-medium">
+					<Link
+						to="/circles"
+						className="hover:text-purple-400 transition-colors"
+					>
+						Circles
+					</Link>
+				</div>
 
 				<div className="flex items-center px-2">
 					<Link
